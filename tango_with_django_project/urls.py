@@ -13,13 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 from rango import views
+from registration.backends.simple.views import RegistrationView
+from django.contrib.auth.views import password_reset, password_reset_done
 
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self,user):
+        return '/rango/'
 
 
 urlpatterns = [
@@ -27,5 +32,9 @@ urlpatterns = [
     url(r'^rango/', include('rango.urls')),
     # above maps any URLs starting with rango/ to be handled by the rango app
     url(r'^$', views.index, name='index'),
+    url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+    url(r'^password/reset/$', password_reset, name='reset_password'),
+    url(r'^password/reset/done/$', password_reset_done, name='password_reset_done'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

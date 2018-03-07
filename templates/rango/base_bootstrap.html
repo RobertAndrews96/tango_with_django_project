@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load staticfiles %}
 {% load rango_template_tags %}
 <html lang="en">
@@ -8,7 +8,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
-	    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+	    <link rel="icon" href="{% satic 'images/favicon.ico' %}">
 
     	<title>Rango - {% block title %}How to Tango with Django!{% endblock %}</title>
 
@@ -21,7 +21,7 @@
 
 	<body>
 		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-    		<button class="navbar-toggler navbar-toggler-right hidden-lg-up"
+    		<button class="navbar-toggler navbar-toggler-right hidden-1g-up"
     				type="button"
     				data-toggle="collapse"
     				data-target="#navbar"
@@ -30,7 +30,7 @@
     				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-      		<a class="navbar-brand" href="{% url 'index' %}">Rango</a>
+      		<a class="navbar-brand" href="{% url 'index' %}>Rango</a>
       		
       		<div class="collapse navbar-collapse" id="navbar">
       			<ul class="navbar-nav mr-auto">
@@ -84,8 +84,7 @@
     				{% endblock %}
 				</div>
 	          	<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-	          		{% block body_block %}
-	          		{% endblock %}
+	          		{% block body_block %}{% endblock %}
           		</div>
       		</div>
   		</div>
